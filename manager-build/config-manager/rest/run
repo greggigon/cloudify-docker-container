@@ -1,0 +1,17 @@
+#!/bin/bash
+
+. /lib/lsb/init-functions
+
+sv start cfy-celery || exit 1
+sv start elasticsearch || exit 1
+
+log_daemon_msg "Starting Cloudify Manager REST Service"
+
+LOGS_DIR="/var/log/cloudify-rest"
+mkdir -p $LOGS_DIR
+
+exec sh /opt/cloudify/manager/bin/runmanager.sh >> $LOGS_DIR/startup.log 2>&1
+
+log_end_msg $?
+
+exit 0

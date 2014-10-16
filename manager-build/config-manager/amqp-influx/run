@@ -1,0 +1,23 @@
+#!/bin/bash
+
+. /lib/lsb/init-functions
+
+sv start rabbitmq || exit 1
+sv start influxdb || exit 1
+
+log_daemon_msg "Starting Cloudify AMQP Influx Service"
+
+LOGS_DIR="/var/log/cloudify-amqp-influx"
+mkdir -p $LOGS_DIR
+
+cd /opt/cloudify/manager/
+
+. bin/activate
+
+START_COMMAND="cloudify-amqp-influxdb --amqp-exchange cloudify-monitoring --amqp-routing-key '*' --influx-database cloudifyvars"
+
+exec $START_COMMAND >>  $LOGS_DIR/startup.log 2>&1
+
+log_end_msg $?
+
+exit 0

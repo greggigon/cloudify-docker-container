@@ -1,0 +1,16 @@
+#!/bin/sh
+
+. /lib/lsb/init-functions
+
+NAME=nginx
+LOG_DIR=/var/log/$NAME
+
+mkdir -p "$LOG_DIR" 
+
+log_daemon_msg "Starting NginX"
+
+exec /usr/sbin/nginx -g "daemon off;"
+
+log_end_msg $?
+
+exit 0

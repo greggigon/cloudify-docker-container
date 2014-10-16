@@ -1,0 +1,16 @@
+#!/bin/bash
+
+. /lib/lsb/init-functions
+
+sv start rabbitmq || exit 1
+
+log_daemon_msg "Starting Cloudify Celery Worker"
+
+LOGS_DIR="/var/log/celery/cloudify.management__worker/work/"
+mkdir -p $LOGS_DIR
+
+exec sh /opt/cloudify/celery/cloudify.management__worker/env/bin/runceleryd.sh >> $LOGS_DIR/startup.log 2>&1
+
+log_end_msg $?
+
+exit 0

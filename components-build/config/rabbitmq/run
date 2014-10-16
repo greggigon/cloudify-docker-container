@@ -1,0 +1,18 @@
+#!/bin/sh
+
+. /lib/lsb/init-functions
+
+NAME=rabbitmq
+LOG_DIR=/var/log/$NAME
+
+mkdir -p "$LOG_DIR" 
+
+log_daemon_msg "Starting RabbitMQ Server"
+
+RUN_COMMAND="/usr/sbin/rabbitmq-server"
+
+exec $RUN_COMMAND >> $LOG_DIR/startup.log 2>&1
+
+log_end_msg $?
+
+exit 0

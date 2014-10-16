@@ -1,0 +1,17 @@
+{
+  "cosmoServer": "localhost",
+  "cosmoPort": 8180,
+  "log4js": {
+    "appenders": [
+      {
+        "type": "console"
+      },
+      {
+        "type": "file",
+        "filename": "/var/log/cloudify-ui/application.log",
+        "maxLogSize": 20480,
+        "backups": 3
+      }
+    ]
+  }
+}

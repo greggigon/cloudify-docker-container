@@ -1,0 +1,20 @@
+#!/bin/sh
+
+. /lib/lsb/init-functions
+
+NAME=riemann
+LOG_DIR=/var/log/$NAME
+
+mkdir -p "$LOG_DIR" 
+
+log_daemon_msg "Starting Riemann"
+
+export EXTRA_CLASSPATH='/usr/lib/riemann/langohr.jar'
+
+RUN_COMMAND="/usr/bin/riemann /etc/riemann/riemann.config"
+
+exec $RUN_COMMAND >> $LOG_DIR/riemann.log 2>&1
+
+log_end_msg $?
+
+exit 0

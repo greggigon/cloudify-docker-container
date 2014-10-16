@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+. /lib/lsb/init-functions
+
+INFLUXDB_CONFIG_FILE=/opt/influxdb/shared/config.toml
+NAME=influxdb
+LOG_DIR=/var/log/$NAME
+
+mkdir -p "$LOG_DIR" 
+
+log_daemon_msg "Starting $NAME"
+
+RUN_COMMAND="/usr/bin/influxdb -config=$INFLUXDB_CONFIG_FILE"
+
+exec $RUN_COMMAND >> $LOG_DIR/influxdb.log 2>&1
+
+log_end_msg $?
+
+exit 0

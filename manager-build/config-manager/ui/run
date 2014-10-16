@@ -1,0 +1,19 @@
+#!/bin/bash
+
+. /lib/lsb/init-functions
+
+sv start cfy-rest || exit 1
+
+log_daemon_msg "Starting Cloudify UI"
+
+LOGS_DIR=/var/log/cloudify-ui
+mkdir -p $LOGS_DIR
+
+export NODE_ENV=production
+cd /opt/cloudify/ui/node_modules/cosmo-ui/
+
+exec /usr/bin/nodejs /opt/cloudify/ui/node_modules/cosmo-ui/cosmoui.js localhost >> $LOGS_DIR/cosmo-ui.log 2>&1
+
+log_end_msg $?
+
+exit 0
