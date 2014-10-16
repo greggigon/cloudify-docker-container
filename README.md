@@ -3,7 +3,7 @@ Cloudify Docker Container
 
 [Docker](http://docker.io "Docker") files that prepare [Cloudify 3.x](http://getcloudify.org "Cloudify 3.x") to run as a Docker Container.
 
-> The master branch build Container with Cloudify version **3.1m4** at the moment.
+> The master branch builds Container with Cloudify version **3.1m4**.
 
 The base image for Cloudify Docker container is the most excelent image from Phussion team [https://github.com/phusion/baseimage-docker](https://github.com/phusion/baseimage-docker).
 
