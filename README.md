@@ -45,9 +45,13 @@ Once the build is finished you should see **cfy_manager** added to list of image
 
 You can run container by running prepared script:
 
-	sh run-manager-container.sh [optional-ip-address for Manager to use]
+	sh run-manager-container.sh MANAGER_IP_TO_USE KEYS_FOLDER [RUN_INTERACTIVE]
 
-This script starts docker cfy_manager container with all services. It will also log in to bash in the running container so you can tail logs and look around as needed.
+
+Where: 
+* MANAGER_IP_TO_USE - passed to Cloudify components
+* KEYS_FOLDER - directory on the host, that will be mapped to Docker Container /keys directory
+* RUN_INTERACTIVE - optional, if false or missing, Container will start detached in background. true will leave terminal open with BASH in container.
 
 The script does TCP Port mapping between Docker Container and Docker Host. This makes Clodify manager available to the external world. 
 

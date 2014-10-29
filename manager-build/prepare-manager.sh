@@ -7,9 +7,9 @@ echo '*************************************'
 VERSION='3.1m4'
 PLUGIN_VERSION='1.1m4'
 
-UI_URL='http://gigaspaces-repository-eu.s3.amazonaws.com/org/cloudify3/3.1.0/m4-RELEASE/cloudify-ui_3.1.0-m4-b81_amd64.deb'
-UI_PACKAGE='cloudify-ui_3.1.0-m4-b81_amd64.deb'
-UI_VERSION='3.1.0-m4'
+UI_URL='http://gigaspaces-repository-eu.s3.amazonaws.com/org/cloudify3/3.1.0/m5-RELEASE/cloudify-ui_3.1.0-m5-b82_amd64.deb'
+UI_PACKAGE='cloudify-ui_3.1.0-m5-b82_amd64.deb'
+UI_VERSION='3.1.0-m5'
 
 UBUNTU_AGENT_URL='http://gigaspaces-repository-eu.s3.amazonaws.com/org/cloudify3/3.1.0/m4-RELEASE/cloudify-ubuntu-agent_3.1.0-m4-b81_amd64.deb'
 UBUNTU_AGENT_PACKAGE='cloudify-ubuntu-agent_3.1.0-m4-b81_amd64.deb'
@@ -225,6 +225,8 @@ tar -czf Ubuntu-agent.tar.gz ./Ubuntu-agent/
 mv Ubuntu-agent.tar.gz /opt/cloudify/manager/resources/packages/agents/
 deactivate
 rm -rf /tmp/Ubuntu-agent/
+
+mkdir /keys
 
 echo '************************ CLEANING ************************'
 
